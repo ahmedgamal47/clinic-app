@@ -45,7 +45,8 @@
                             <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
                             <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
                             <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
-                            <th class="py-2 px-4 border-b border-gray-200 bg-gray-50"></th>
+                            <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Age</th>
+                            <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Session</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,6 +55,7 @@
                             <td class="py-2 px-4 border-b border-gray-200">{{ $patient->name }}</td>
                             <td class="py-2 px-4 border-b border-gray-200">{{ $patient->email }}</td>
                             <td class="py-2 px-4 border-b border-gray-200">{{ $patient->phone }}</td>
+                            <td class="py-2 px-4 border-b border-gray-200">{{ $patient->age ? $patient->age . ' ' . __('Years') : 'N/A' }}</td>
                             <td class="py-2 px-4 border-b border-gray-200">
                                 @if($patient->sessions->count() > 0)
                                     {{ $patient->sessions->sortByDesc('date')->first()->date->format('Y-m-d') }}

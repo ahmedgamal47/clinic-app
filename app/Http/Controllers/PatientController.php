@@ -26,6 +26,12 @@ class PatientController extends Controller
         }
         
         $patients = $query->latest()->paginate(10);
+
+        foreach ($patients as $patient) {
+            if ($patient->date_of_birth) {
+                $patient->age = $patient->getAgeAttribute();
+            }
+        }
         
         return view('patients.index', compact('patients', 'search'));
     }
@@ -64,6 +70,7 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
+        $patient->age = $patient->getAgeAttribute();
         return view('patients.show', compact('patient'));
     }
 

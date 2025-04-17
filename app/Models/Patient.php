@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Patient extends Model
 {
@@ -21,6 +22,18 @@ class Patient extends Model
     protected $casts = [
         'date_of_birth' => 'date',
     ];
+
+    /**
+     * Get the patient's age based on birth date.
+     */
+    public function getAgeAttribute()
+    {
+        if (!$this->date_of_birth) {
+            return null;
+        }
+        
+        return floor($this->date_of_birth->diffInYears(Carbon::now()));
+    }
     
     /**
      * Get the doctor/user that owns the patient.

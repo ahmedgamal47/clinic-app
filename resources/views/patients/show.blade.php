@@ -38,6 +38,11 @@
                         <h3 class="text-sm font-medium text-gray-500">Date of Birth</h3>
                         <p>{{ $patient->date_of_birth ? $patient->date_of_birth->format('Y-m-d') : 'Not provided' }}</p>
                     </div>
+
+                    <div>
+                        <h3 class="text-sm font-medium text-gray-500">Age</h3>
+                        <p>{{ $patient->age ? $patient->age . ' ' . __('Years') : 'Not provided' }}</p>
+                    </div>
                     
                     <div>
                         <h3 class="text-sm font-medium text-gray-500">Address</h3>
